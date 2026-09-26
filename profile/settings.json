@@ -1,0 +1,12 @@
+{
+  "defaultProvider": "nvidia",
+  "defaultModel": "moonshotai/kimi-k3",
+  "enabledModels": [
+    "nvidia/moonshotai/kimi-k3",
+    "nvidia/z-ai/glm-5.3",
+    "nvidia/z-ai/glm-5.3-flash",
+    "nvidia/deepseek-ai/deepseek-v4.1-flash"
+  ],
+  "theme": "Gentleman-Cute",
+  "lastChangelogVersion": "0.87.1"
+}

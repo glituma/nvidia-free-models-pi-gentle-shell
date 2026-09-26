@@ -1,0 +1,8 @@
+# Never commit credentials or local agent state
+.env
+.env.*
+*.key
+auth.json
+models-store.json
+sessions/
+.DS_Store
