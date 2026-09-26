@@ -201,17 +201,17 @@ nvidia    z-ai/glm-5.3-flash               1M       131.1K   yes       yes
 ## 7. Crear el alias
 
 ```fish
-alias pinv 'gentle-shell --home ~/.gentle-shell/nvidia'
-funcsave pinv
+alias gsh-nvidia 'gentle-shell --home ~/.gentle-shell/nvidia'
+funcsave gsh-nvidia
 ```
 
-`funcsave` lo guarda en `~/.config/fish/functions/pinv.fish`, así que queda disponible en cada nueva terminal.
+`funcsave` lo guarda en `~/.config/fish/functions/gsh-nvidia.fish`, así que queda disponible en cada nueva terminal.
 
 ## 8. Uso diario
 
 ```fish
 cd ~/dev/mi-mvp
-pinv
+gsh-nvidia
 ```
 
 Dentro de la sesión:
@@ -244,7 +244,7 @@ Uso sugerido:
 
 ```fish
 rm -rf ~/.gentle-shell/nvidia
-functions -e pinv; rm -f ~/.config/fish/functions/pinv.fish
+functions -e gsh-nvidia; rm -f ~/.config/fish/functions/gsh-nvidia.fish
 security delete-generic-password -a $USER -s nvidia-api-key
 ```
 
