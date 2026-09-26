@@ -44,6 +44,7 @@ Probado con pi `0.87.1` y gentle-pi `3.7.0`.
 **Límites y advertencias**
 
 - El nivel gratuito es para prototipos y tiene un límite de peticiones por minuto. Para producción se necesita un plan de pago o NIM autoalojado.
+- **Hay colas.** En horas de alta demanda las respuestas pueden tardar minutos o no llegar. En nuestras pruebas del 26-09-2026, GLM 5.3 Flash tardó 78 s en responder "OK" y DeepSeek V4.1 Flash no respondió en 4 minutos. Kimi K3 respondió con normalidad.
 - Los prompts pasan por los servidores de NVIDIA. Nunca envíes datos sensibles como datos de clientes, credenciales o información financiera.
 
 ## 2. Verificar que los modelos están disponibles
@@ -235,6 +236,7 @@ Uso sugerido:
 | `401 Unauthorized` | Key ausente o incorrecta en el Llavero | Repite el paso 3 con `-U` |
 | El Llavero pide contraseña en cada petición | `security` no tiene acceso permitido | Elige **Permitir siempre** en el aviso |
 | `429 Too Many Requests` | Límite del nivel gratuito | Espera un minuto o cambia de modelo |
+| El modelo se queda pensando, sin error | Cola del nivel gratuito: los modelos NVIDIA envían `NVCF-POLL-SECONDS: 3600`, así que la petición espera en cola hasta 1 hora en lugar de fallar | Cancela con `Esc`, cambia de modelo con `Ctrl+P` y vuelve a probar más tarde |
 | Un modelo no aparece en `/model` | Error en `enabledModels` o el modelo salió del catálogo | Repite la comprobación del paso 2 |
 | Respuestas de DeepSeek cortadas | `maxTokens` conservador | Sube `maxTokens` en `models.json` cuando se conozcan los límites reales |
 

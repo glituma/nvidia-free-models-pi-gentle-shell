@@ -44,6 +44,7 @@ Tested with pi `0.87.1` and gentle-pi `3.7.0`.
 **Limits and caveats**
 
 - The free tier is for prototyping. Requests per minute are rate-limited. Production use requires a paid plan or self-hosted NIM.
+- **Expect queues.** At peak times responses can take minutes or never arrive. In our tests on 2026-09-26, GLM 5.3 Flash took 78 s to reply "OK" and DeepSeek V4.1 Flash did not respond within 4 minutes. Kimi K3 responded normally.
 - Prompts go through NVIDIA's servers. Never send sensitive data such as member records, credentials, or financial data.
 
 ## 2. Verify the models are available
@@ -235,6 +236,7 @@ Suggested use:
 | `401 Unauthorized` | Key missing or wrong in Keychain | Re-run step 3 with `-U` |
 | Keychain password prompt on each request | Keychain access not allowed for `security` | Choose **Always Allow** in the prompt |
 | `429 Too Many Requests` | Free-tier rate limit | Wait a minute, or switch to another model |
+| The model keeps thinking with no error | Free-tier queue: NVIDIA models send `NVCF-POLL-SECONDS: 3600`, so the request waits in queue up to 1 hour instead of failing | Cancel with `Esc`, switch models with `Ctrl+P`, and retry later |
 | A model does not appear in `/model` | `enabledModels` typo or the model was removed from the catalog | Re-run the catalog check in step 2 |
 | DeepSeek responses cut off | Conservative `maxTokens` | Raise `maxTokens` in `models.json` once real limits are known |
 
